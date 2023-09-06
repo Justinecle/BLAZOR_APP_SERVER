@@ -13,7 +13,7 @@ You can add, edit and delete books.
 - <b>Delete books you no longer need.</b>
 - <b>Enjoy a clean and user-friendly interface.</b>
 
-<h2>🔧 Technologies Used:<h2>
+<h2>🔧 Technologies Used:</h2>
 - <b>Blazor for the front-end.</b>
 - <b>C# for back-end logic.</b>
 - <b>Bootstrap/CSS for responsive design.</b>
