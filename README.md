@@ -7,7 +7,7 @@ This project is a web application using Blazor for an online library. This appli
 You can add, edit and delete books.
 <br />
 
-<h2>📖 Features:<h2>
+<h2>📖 Features:</h2>
 - <b>Add new books to our collection.</b>
 - <b>Edit book details easily.</b>
 - <b>Delete books you no longer need.</b>
