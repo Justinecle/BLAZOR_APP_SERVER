@@ -1,0 +1,33 @@
+﻿@inherits LayoutComponentBase
+
+<style>
+    /* Style the link */
+    a.custom-link {
+        color: #442200; /* Brown color */
+        text-decoration: none; /* Remove underline */
+    }
+
+    /* Style the link on hover */
+    a.custom-link:hover {
+        color: #663300; /* Lighter brown color on hover */
+        text-decoration: underline; /* Underline on hover */
+    }
+</style>
+
+<PageTitle>BlazorAppServer_JustineClément</PageTitle>
+
+<div class="page">
+    <div class="sidebar">
+        <NavMenu />
+    </div>
+
+    <main>
+        <div class="top-row px-4">
+            <a href="/about" target="_blank" class="custom-link">About</a>
+        </div>
+
+        <article class="content px-4">
+            @Body
+        </article>
+    </main>
+</div>

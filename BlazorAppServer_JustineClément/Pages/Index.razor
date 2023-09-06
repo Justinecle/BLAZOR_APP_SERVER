@@ -1,0 +1,41 @@
+﻿@page "/"
+
+<style>
+    /* Style pour le bouton*/
+    .button {
+        background-color: #442200;
+        color: white;
+    }
+
+        /* Style pour le bouton au survol (hover) */
+        .button:hover {
+            background-color: #663300;
+            color: white;
+        }
+</style>
+
+<PageTitle>Index</PageTitle>
+
+<div class="container text-center mt-5">
+    <h1>Welcome to our Online Library</h1>
+    <p>Discover our selection of fascinating books in a wide variety of genres.</p>
+</div>
+
+<!-- Images alignées horizontalement -->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-4 text-center">
+            <img src="/book1.jpg" alt="Book 1" width="250" height="350" />
+        </div>
+        <div class="col-md-4 text-center">
+            <img src="/book2.jpg" alt="Book 2" width="250" height="350" />
+        </div>
+        <div class="col-md-4 text-center">
+            <img src="/book3.jpg" alt="Book 3" width="250" height="350" />
+        </div>
+    </div>
+</div>
+
+<div class="container text-center mt-4 my-4">
+    <a href="/books-list" class="btn button">See the books</a>
+</div>

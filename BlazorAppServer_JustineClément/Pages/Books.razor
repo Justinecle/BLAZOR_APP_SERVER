@@ -1,0 +1,155 @@
+﻿@page "/books-list"
+
+<style>
+    /* Style arrière-plan gris clair */
+    .custom-background {
+        background-color: #f2f2f2;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    /* Style du contenu à l'intérieur de l'encadré gris */
+    .custom-content {
+        margin-left: auto;
+        margin-right: auto;
+        padding-left: 15px;
+        padding-right: 15px;
+        background-color: white;
+        border-radius: 8px;
+        padding: 20px;
+    }
+
+    /* Style pour le bouton d'ajout de livre */
+    .add-book-button {
+        background-color: #442200;
+        color: white;
+    }
+
+    /* Style pour le bouton d'ajout de livre en marron au survol (hover) */
+    .add-book-button:hover {
+        background-color: #663300;
+        color: white;
+    }
+</style>
+
+<div class="custom-background my-4">
+    <h3 class="text-center">Books List</h3>
+
+    <!-- Liste des livres déjà présents -->
+    <div class="custom-content">
+        <ul class="list-group">
+            @foreach (var book in books)
+            {
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>@book.Title - @book.Author</span>
+                    <div>
+                        <button class="btn btn-info btn-sm" @onclick="() => EditBook(book)">Edit</button>
+                        <button class="btn btn-danger btn-sm" @onclick="() => DeleteBook(book)">Delete</button>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+
+    <!-- Formulaire d'ajout ou d'édition de livre -->
+    <div class="custom-content mt-4">
+        @if (isEditing)
+        {
+            <!-- Formulaire d'édition -->
+            <h4 class="text-center">Edit Book</h4>
+            <form class="border p-4 custom-content" @onsubmit="SaveEdit">
+                <div class="form-group">
+                    <label for="newTitle">Title :</label>
+                    <input type="text" id="newTitle" class="form-control" @bind="newTitle" />
+                </div>
+
+                <div class="form-group">
+                    <label for="newAuthor">Author :</label>
+                    <input type="text" id="newAuthor" class="form-control" @bind="newAuthor" />
+                </div>
+
+                <button class="btn add-book-button btn-block" type="submit">Save</button>
+            </form>
+        }
+        else
+        {
+            <!-- Formulaire d'ajout -->
+            <h4 class="text-center">Add a New Book</h4>
+            <form class="border p-4 custom-content" @onsubmit="AddBook">
+                <div class="form-group">
+                    <label for="newTitle">Title :</label>
+                    <input type="text" id="newTitle" class="form-control" @bind="newTitle" />
+                </div>
+
+                <div class="form-group">
+                    <label for="newAuthor">Author :</label>
+                    <input type="text" id="newAuthor" class="form-control" @bind="newAuthor" />
+                </div>
+
+                <button class="btn add-book-button btn-block" type="submit">Add</button>
+            </form>
+        }
+    </div>
+</div>
+
+@code {
+    private string newTitle = "";
+    private string newAuthor = "";
+    private List<Book> books = new List<Book>
+    {
+        new Book { Title = "The Lord of the Rings", Author = "J.R.R. Tolkien" },
+        new Book { Title = "Harry Potter and the Sorcerer's Stone", Author = "J.K. Rowling" },
+        new Book { Title = "1984", Author = "George Orwell" }
+    };
+    private Book editingBook;
+    private bool isEditing = false;
+
+    private void AddBook()
+    {
+        if (!string.IsNullOrWhiteSpace(newTitle) && !string.IsNullOrWhiteSpace(newAuthor))
+        {
+            books.Add(new Book { Title = newTitle, Author = newAuthor });
+            newTitle = "";
+            newAuthor = "";
+        }
+    }
+
+    private void DeleteBook(Book book)
+    {
+        books.Remove(book);
+    }
+
+    private void EditBook(Book book)
+    {
+        // Pré-remplis le formulaire d'édition avec les valeurs actuelles du livre
+        newTitle = book.Title;
+        newAuthor = book.Author;
+
+        // Définit le livre en cours d'édition sur le livre sélectionné
+        editingBook = book;
+
+        // Active le mode édition
+        isEditing = true;
+    }
+
+    private void SaveEdit()
+    {
+        if (editingBook != null)
+        {
+            // Met à jour les valeurs du livre en cours d'édition avec celles du formulaire
+            editingBook.Title = newTitle;
+            editingBook.Author = newAuthor;
+
+            // Réinitialise le livre en cours d'édition
+            editingBook = null;
+            newTitle = "";
+            newAuthor = "";
+
+            // Désactive le mode édition
+            isEditing = false;
+        }
+    }
+}
