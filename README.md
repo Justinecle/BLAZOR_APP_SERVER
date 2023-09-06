@@ -8,15 +8,15 @@ You can add, edit and delete books.
 <br />
 
 <h2>📖 Features:<h2>
-- </b>Add new books to our collection.</b>
-- </b>Edit book details easily.</b>
-- </b>Delete books you no longer need.</b>
-- </b>Enjoy a clean and user-friendly interface.</b>
+- <b>Add new books to our collection.</b>
+- <b>Edit book details easily.</b>
+- <b>Delete books you no longer need.</b>
+- <b>Enjoy a clean and user-friendly interface.</b>
 
 <h2>🔧 Technologies Used:<h2>
-- </b>Blazor for the front-end.</b>
-- </b>C# for back-end logic.</b>
-- </b>Bootstrap/CSS for responsive design.</b>
+- <b>Blazor for the front-end.</b>
+- <b>C# for back-end logic.</b>
+- <b>Bootstrap/CSS for responsive design.</b>
 
 <h2>Program walk-through:</h2>
 
